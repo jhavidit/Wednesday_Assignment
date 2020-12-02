@@ -97,55 +97,60 @@ class SearchActivity : AppCompatActivity() {
 
     fun submit(p0: String) {
         if (!InternetConnectivity.isNetworkAvailable(this@SearchActivity)!!)
-            Toast.makeText(this, "Internet Unavailable", Toast.LENGTH_SHORT).show()
-        else if (p0.isNotEmpty()) {
-            val previousSearch = PreviousSearch(0, p0)
-            binding.recyclerView.visibility = GONE
-            binding.start.visibility = GONE
-            binding.recyclerViewHistory.visibility = GONE
-            viewModel.showProgress.observe(this@SearchActivity, Observer {
-                if (it) {
+            Toast.makeText(this, "Internet Unavailable", Toast.LENGTH_LONG).show()
+        else {
+            if (p0.isNotEmpty()) {
+                binding.recyclerView.visibility = GONE
+                binding.start.visibility = GONE
+                binding.recyclerViewHistory.visibility = GONE
+                viewModel.showProgress.observe(this@SearchActivity, Observer {
+                    if (it) {
+                        binding.recyclerView.visibility = GONE
+                        binding.progressCircular.visibility = VISIBLE
 
-                    binding.progressCircular.visibility = VISIBLE
-
-                } else {
-                    binding.progressCircular.visibility = GONE
-                    binding.recyclerView.visibility = VISIBLE
-                }
-            })
-            viewModel.addPreviousSearch(previousSearch)
-            viewModel.getMusicData(p0)
-            viewModel.showMusicList.observe(this@SearchActivity, Observer {
-                if (it.resultCount == 0) {
-                    binding.progressCircular.setAnimation(R.raw.empty_list)
-                    binding.progressCircular.visibility = VISIBLE
-                    binding.recyclerView.visibility = GONE
-                    binding.recyclerViewHistory.visibility = GONE
-                    Toast.makeText(this, "No data avaiable", Toast.LENGTH_SHORT).show()
-                } else {
-                    viewModel.deleteAllSong()
-
-                    for (i in it.results) {
-                        val musicItemLocal = MusicItemLocal(
-                            0,
-                            i.kind,
-                            i.artistName,
-                            i.artworkUrl100,
-                            i.country,
-                            i.trackPrice,
-                            i.trackName,
-                            i.collectionName,
-                            i.currency
-                        )
-
-                        viewModel.addMusicData(musicItemLocal)
+                    } else {
+                        binding.progressCircular.visibility = GONE
+                        binding.recyclerView.visibility = VISIBLE
                     }
 
-                    adapter.setMusicItem(it.results)
-                }
-            })
+
+
+                })
+                val previousSearch = PreviousSearch(0, p0)
+                viewModel.addPreviousSearch(previousSearch)
+                viewModel.getMusicData(p0)
+                viewModel.showMusicList.observe(this@SearchActivity, Observer {
+                    if (it.resultCount == 0) {
+                        binding.progressCircular.setAnimation(R.raw.empty_list)
+                        binding.progressCircular.visibility = VISIBLE
+                        binding.recyclerView.visibility = GONE
+                        binding.recyclerViewHistory.visibility = GONE
+                        Toast.makeText(this, "No data avaiable", Toast.LENGTH_SHORT).show()
+                    } else {
+                        viewModel.deleteAllSong()
+
+                        for (i in it.results) {
+                            val musicItemLocal = MusicItemLocal(
+                                0,
+                                i.kind,
+                                i.artistName,
+                                i.artworkUrl100,
+                                i.country,
+                                i.trackPrice,
+                                i.trackName,
+                                i.collectionName,
+                                i.currency
+                            )
+
+                            viewModel.addMusicData(musicItemLocal)
+                        }
+
+                        adapter.setMusicItem(it.results)
+                    }
+                })
+            }
         }
-        binding.recyclerViewHistory.visibility = GONE
+            binding.recyclerViewHistory.visibility = GONE
 
     }
 }

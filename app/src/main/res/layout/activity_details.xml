@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="2dp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <ImageView
+
+                    android:id="@+id/song_poster"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/song_image" />
+
+                <TextView
+                    android:id="@+id/song_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_poster"
+                    android:layout_centerHorizontal="true"
+                    android:text="Memories"
+                    android:textAlignment="center"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:textAlignment="center"
+                    android:id="@+id/song_artist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_name"
+                    android:layout_centerHorizontal="true"
+                    android:text="maroon -5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/kind_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_artist"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Song kind - "
+
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/kind"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/song_artist"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/kind_heading"
+                    android:text="Asia"
+
+                    android:textSize="20sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/country_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kind"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Country - "
+
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/kind"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/country_heading"
+                    android:text="album"
+
+                    android:textSize="20sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/track_name_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/country"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Track name -"
+
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/track_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/country"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/track_name_heading"
+                    android:text="memory"
+
+                    android:textSize="20sp"
+
+                    />
+
+                <TextView
+                    android:id="@+id/track_price_heading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/track_name_heading"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="4dp"
+                    android:text="Track Price - "
+
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/track_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/track_name_heading"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/track_price_heading"
+                    android:text="abs,sda,sfa"
+                    android:textSize="20sp"
+
+                    />
+
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

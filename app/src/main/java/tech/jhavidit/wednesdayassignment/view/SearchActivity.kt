@@ -57,9 +57,11 @@ class SearchActivity : AppCompatActivity() {
                 )
                 list.add(musicResult)
             }
-            binding.start.visibility = GONE
-            binding.recyclerView.visibility= VISIBLE
-            adapter.setMusicItem(list)
+            if(list.isNotEmpty()) {
+                binding.start.visibility = GONE
+                binding.recyclerView.visibility = VISIBLE
+                adapter.setMusicItem(list)
+            }
         })
 
         binding.searchBar.setOnCloseListener {
@@ -99,9 +101,11 @@ class SearchActivity : AppCompatActivity() {
         else if (p0.isNotEmpty()) {
             val previousSearch = PreviousSearch(0, p0)
             binding.recyclerView.visibility = GONE
+            binding.start.visibility = GONE
             binding.recyclerViewHistory.visibility = GONE
             viewModel.showProgress.observe(this@SearchActivity, Observer {
                 if (it) {
+
                     binding.progressCircular.visibility = VISIBLE
 
                 } else {
